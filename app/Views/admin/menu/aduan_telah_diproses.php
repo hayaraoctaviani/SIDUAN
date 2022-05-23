@@ -5,7 +5,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle pb-3">
-      <h1>Data Aduan Masuk</h1>
+      <h1>Data Aduan Yang Telah di Proses</h1>
       
     </div><!-- End Page Title -->
 
@@ -25,9 +25,7 @@
                     <th scope="col">Kode</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Jenis</th>
-                    <th scope="col">Tanggal Masuk</th>
-                    <th scope="col">Tanggal Kadaluarsa</th>
-                    <th scope="col">Jumlah (pcs)</th>
+                    <th scope="col">Aduan</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -38,12 +36,7 @@
                     <td>28</td>
                     <td>2016-05-25</td>
                     <td>2016-05-25</td>
-                    <td>2016-05-25</td>
-                    <td>2016-05-25</td>
                     <td>
-                        <a href="edit_obat_masuk.php" title="edit"
-                              ><i class="bi bi-pencil-fill text-primary"></i
-                            ></a>
                         <a href="" title="delete"
                               ><i class="bi bi-trash-fill text-danger"></i
                             ></a>
@@ -51,7 +44,6 @@
                   </tr>
                 </tbody>
               </table>
-              <button type="button" class="btn btn-success">Tambah</button>
               <button type="button" class="btn btn-primary">Cetak</button>
               <!-- End Bordered Table -->
 

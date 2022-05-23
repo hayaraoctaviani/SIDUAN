@@ -38,10 +38,11 @@ $routes->setAutoRoute(true);
 // $routes->get('/user/', 'Admin/User::index');
 
 
-$routes->get('/', 'User::index');
+// $routes->get('/', 'User::index');
+$routes->get('/admin/login', 'Admin::login');
+$routes->get('/admin/profil', 'Admin::profil');
 $routes->get('/admin', 'Admin::index');
-$routes->get('/admin/login', 'Admin::admin');
-$routes->get('/admin/aduan_masuk', 'Admin::aduan_masuk');
+$routes->delete('/admin/(:num)', 'Admin::index/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -6,9 +6,13 @@
 
     <div class="pagetitle pb-3">
       <h1>Data Aduan Masuk</h1>
-      
+      <?php if(session()->getFlashdata('pesan')) { ?>
+        <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+      </div>
+       <?php }; ?>
     </div><!-- End Page Title -->
-
+ 
     <section class="section">
       <div class="row">
         <div class="col-lg">     
@@ -22,37 +26,37 @@
                 <thead>
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Kode</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Jenis</th>
-                    <th scope="col">Tanggal Masuk</th>
-                    <th scope="col">Tanggal Kadaluarsa</th>
-                    <th scope="col">Jumlah (pcs)</th>
+                    <th scope="col">Aduan</th>                    
+                    <th scope="col">Bukti</th>                    
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php $i=1; ?>
+                  <?php foreach($aduan as $ad) { ?>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
-                    <td>2016-05-25</td>
-                    <td>2016-05-25</td>
-                    <td>2016-05-25</td>
+                    <th scope="row"> <?= $i++; ?> </th>
+                    <td> <?= $ad['nama']; ?> </td>
+                    <td> <?= $ad['jenis_aduan']; ?> </td>
+                    <td> <?= $ad['aduan']; ?> </td>
+                    <td> <?= $ad['bukti']; ?> </td>
                     <td>
-                        <a href="edit_obat_masuk.php" title="edit"
-                              ><i class="bi bi-pencil-fill text-primary"></i
-                            ></a>
-                        <a href="" title="delete"
-                              ><i class="bi bi-trash-fill text-danger"></i
-                            ></a>
+                      <form action="/admin/<?= $ad['id'];?>" method="post">
+                      <?= csrf_field(); ?>
+                      <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <button type="submit" class="btn btn-success">Edit</button>
+                                              
+                      </form>
                     </td>
                   </tr>
+                  <?php } ?>
                 </tbody>
               </table>
-              <button type="button" class="btn btn-success">Tambah</button>
-              <button type="button" class="btn btn-primary">Cetak</button>
+              <a href="" class="btn btn-primary">Cetak</a>
+              <a href="/admin/create" class="btn btn-success">Tambah</a>
               <!-- End Bordered Table -->
 
               
@@ -60,7 +64,6 @@
             </div>
           </div>
 
-         
 
         </div>
       </div>
