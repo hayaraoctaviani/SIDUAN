@@ -11,7 +11,7 @@
         <?= session()->getFlashdata('pesan'); ?>
       </div>
        <?php }; ?>
-    </div><!-- End Page Title -->
+        </div><!-- End Page Title -->
  
     <section class="section">
       <div class="row">
@@ -43,12 +43,13 @@
                     <td> <?= $ad['aduan']; ?> </td>
                     <td> <?= $ad['bukti']; ?> </td>
                     <td>
-                      <form action="/admin/<?= $ad['id'];?>" method="post">
+                     
+                      <a href="/admin/edit/<?= ; ?>" class="btn btn-success">Edit</a>
+
+                      <form action="/admin/<?= $ad['id']; ?>" method="post">
                       <?= csrf_field(); ?>
                       <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger">Hapus</button>
-                        <button type="submit" class="btn btn-success">Edit</button>
-                                              
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin?');">Hapus</button>                     
                       </form>
                     </td>
                   </tr>

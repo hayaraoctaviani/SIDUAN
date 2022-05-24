@@ -42,7 +42,8 @@ $routes->setAutoRoute(true);
 $routes->get('/admin/login', 'Admin::login');
 $routes->get('/admin/profil', 'Admin::profil');
 $routes->get('/admin', 'Admin::index');
-$routes->delete('/admin/(:num)', 'Admin::index/$1');
+$routes->delete('/admin/(:num)', 'Admin::delete/$1');
+$routes->get('/admin/edit/(:segment)', 'Admin::edit/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

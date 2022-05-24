@@ -90,7 +90,18 @@ class Admin extends BaseController
     public function delete($id)
     {
         $this->aduanModel->delete($id);
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/admin');
+    }
+
+    public function edit($id=null)
+    {
+         $data = [
+            'title' => 'Form Edit Data',
+            'validation' => \Config\Services::validation(),
+            'aduan' => $this->aduanModel->getIdValue($id)
+        ];
+        return view('admin/menu/edit',$data);
     }
 
     public function login()

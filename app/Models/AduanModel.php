@@ -8,6 +8,6 @@ class AduanModel extends Model
 {
     protected $table = 'aduan_masuk';
     protected $useTimestamps = 'true';
-    protected $allowedFields = ['nama','aduan','jenis_aduan'];
+    protected $allowedFields = ['nama','aduan','jenis_aduan','bukti'];
     
 }
