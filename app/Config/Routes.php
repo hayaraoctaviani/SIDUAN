@@ -44,6 +44,8 @@ $routes->get('/admin/profil', 'Admin::profil');
 $routes->get('/admin', 'Admin::index');
 $routes->delete('/admin/(:num)', 'Admin::delete/$1');
 $routes->get('/admin/edit/(:segment)', 'Admin::edit/$1');
+$routes->get('/user', 'User::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

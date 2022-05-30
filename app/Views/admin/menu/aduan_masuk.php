@@ -43,13 +43,18 @@
                     <td> <?= $ad['aduan']; ?> </td>
                     <td> <?= $ad['bukti']; ?> </td>
                     <td>
-                     
-                      <a href="/admin/edit/<?= ; ?>" class="btn btn-success">Edit</a>
+              
+                      <a href="/admin/edit/<?= $ad['id'] ;?>" class="btn btn-warning" style="font-size: 12px;">Edit</a>
 
-                      <form action="/admin/<?= $ad['id']; ?>" method="post">
+
+                      <form action= "/admin/<?= $ad['id']; ?>" method="post" class="d-inline">
                       <?= csrf_field(); ?>
                       <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin?');">Hapus</button>                     
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ingin menghapus data?');" style="font-size: 12px;" >Hapus</button>  
+
+                        <button type="text" name="confirm" class="btn btn-info" style="font-size: 12px;">Konfirmasi</button>
+
+                       
                       </form>
                     </td>
                   </tr>

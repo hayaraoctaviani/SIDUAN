@@ -92,24 +92,78 @@ class Admin extends BaseController
         $this->aduanModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/admin');
+       
     }
 
-    public function edit($id=null)
+    public function edit($id)
     {
-         $data = [
+        $data_id = $this->aduanModel->getDataId($id);
+        $data = [
             'title' => 'Form Edit Data',
             'validation' => \Config\Services::validation(),
-            'aduan' => $this->aduanModel->getIdValue($id)
+            'edit' => $data_id 
         ];
-        return view('admin/menu/edit',$data);
+        return view('admin/menu/edit',$data);  
+       
+    }
+
+    public function update()
+    {
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+                ],
+           
+            'jenis_aduan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+                ],
+           
+            'aduan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+                ],
+            'bukti' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+                ]
+           
+        ])){
+
+            // disini kita akan menampilkan pesan kesalahan
+            // untuk menampilkan pesan kesalahan, terlebih dahulu kita harus mengambil/menangkap pesan kesalahan
+
+            $validation = \Config\Services::validation();
+            return redirect()->to('/admin/create')->withInput()->with('validation', $validation);
+        }
+
+        // getvar untuk mengambil request baik berupa post maupun get
+        $this->aduanModel->save([
+            'nama' => $this->request->getVar('nama'),
+            'jenis_aduan' => $this->request->getVar('jenis_aduan'),
+            'aduan' => $this->request->getVar('aduan'),
+            'bukti' => $this->request->getVar('bukti')
+        ]);
+        
+        // untuk menampilkan pesan menggunakan session bawaan ci4
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
+        return redirect()->to('/admin');
     }
 
     public function login()
     {
         $data = [
             'title' => 'Login'
-        ];
-        
+        ];        
         echo view('admin/menu/login',$data);
         
     }
@@ -119,8 +173,7 @@ class Admin extends BaseController
     {
         $data = [
             'title' => 'Aduan Telah di Proses'
-        ];
-        
+        ];        
         echo view('admin/menu/aduan_telah_diproses',$data);
         
     }
@@ -128,16 +181,13 @@ class Admin extends BaseController
     {
         $data = [
             'title' => 'Profil'
-        ];
-        
+        ];        
         echo view('admin/menu/profil',$data);
         
     }
     public function logout()
     {
-
-        echo view('admin/menu/login');
-        
+        echo view('admin/menu/login');        
     }
 
 }

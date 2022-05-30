@@ -11,7 +11,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
-    <title> <?= $title; ?> </title>
+    <title></title>
   </head>
   <body>
 

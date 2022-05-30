@@ -6,7 +6,7 @@
        <div class="row">
          <div class="col-lg-12">
            <nav class="navbar fixed-top">
-             <a href="#" class="navbar-brand fw-bold btn" style="margin-left:12%; color: #363062;">SIPUAN</a>
+             <a href="#" class="navbar-brand fw-bold btn" style="margin-left:12%; color: #363062;">SIDUAN</a>
              <ul class="nav me-5 pe-5">
                <li class="nav-item pe-4 fw-bold">
                  <a href="#" class="nav-link" id="" style="color: #363062;">Home</a>
@@ -43,15 +43,19 @@
 <!-- Pengaduan -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-5 m-auto" style="padding-top:15%;">
+        <div class="col-md-5 m-auto" style="padding-top:15%;">
             <h3 class="py-3 pb-3" style="text-align:center; margin-top:-5%;  color:#363062;" id="pengaduan">Pengaduan</h3>
-            <form>  
+            <?php if(session()->getFlashdata('pesan')) { ?>
+              <div class="alert alert-success" role="alert">
+            <?php echo session()->getFlashdata('pesan'); } ?>
+              </div>
+            <form action="/user/save" method="post">  
               <div class="form-group my-3">
-                <label for="exampleInputEmail1">Nama</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">                
+                <label for="nama">Nama</label>
+                <input type="text" name="nama" class="form-control" id="nama" aria-describedby="emailHelp">                
               </div>
               <div class="input-group my-3">
-                <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                <select class="form-select" name="jenis_aduan" id="nama" aria-label="Example select with button addon">
                   <option selected>Pilih...</option>
                   <option value="1">Perkelahian</option>
                   <option value="2">Pencurian</option>
@@ -60,11 +64,15 @@
                 </select>
               </div>     
               <div class="mb-3">
-                <label for="exampleFormControlTextarea1">Penjelasan secara ringkas</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="aduan">Penjelasan secara ringkas</label>
+                <textarea class="form-control" name="aduan" id="aduan" rows="3"></textarea>
+              </div>   
+              <div class="mb-3">
+                <label for="bukti" >Bukti</label>
+                <textarea class="form-control" name="bukti" id="bukti" rows="3"></textarea>
               </div>   
               <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary my-2 px-4 ">Kirim</button>
+                <button type="submit" name="submit" class="btn btn-primary my-2 px-4 ">Kirim</button>
 
               </div>     
             </form>
